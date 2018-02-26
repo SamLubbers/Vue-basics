@@ -4,6 +4,7 @@ var sassMiddleware = require('node-sass-middleware');
 
 var index = require('./routes/index');
 var directives = require('./routes/directives');
+var exercises = require('./routes/exercises');
 
 var app = express();
 
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/directives', directives);
+app.use('/exercises', exercises);
 
 app.listen('3000', () => console.log(
 	'Application listening on http://localhost:3000/'));
