@@ -5,23 +5,23 @@
   <div class="col-12" style="text-align:center">
     <h4>Click listener</h4>
     <h2>{{ counter }}</h2>
-    <button class="btn btn-primary" v-on:click='counter--'>
+    <button class="btn btn-primary" @click='counter--'>
       <i class="fas fa-minus"></i>
     </button>
-    <button class="btn btn-primary" v-on:click='counter++'>
+    <button class="btn btn-primary" @click='counter++'>
       <i class="fas fa-plus"></i>
     </button>
     <hr>
     <h4>Hover listener</h4>
-    <h2 class="hoverHighlight" v-on:mousemove="updateCoordinates">
-      X: {{ x }} | Y: {{ y }}
+    <h2 class="hoverHighlight" @mousemove="updateCoordinates">
+      X: {{ x }} Y: {{ y }}
     </h2>
     <hr>
     <h4>Keypress listener</h4>
     <div class="form-group">
       <input type="text" class="form-control"
-      v-on:keyup='keypress_count++'
-      v-on:keyup.delete='backspace_count++'>
+      @keyup='keypress_count++'
+      @keyup.delete='backspace_count++'>
       <p style="padding:10px">character count: {{character_count}}, backspaces count: {{backspace_count}}</p>
     </div>
   </div>
