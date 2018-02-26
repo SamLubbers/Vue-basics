@@ -5,10 +5,10 @@
   <div class="col-12" style="text-align:center">
     <h4>Click listener</h4>
     <h2>{{ counter }}</h2>
-    <button class="btn btn-primary" v-on:click='decrease'>
+    <button class="btn btn-primary" v-on:click='counter--'>
       <i class="fas fa-minus"></i>
     </button>
-    <button class="btn btn-primary" v-on:click='increase'>
+    <button class="btn btn-primary" v-on:click='counter++'>
       <i class="fas fa-plus"></i>
     </button>
     <hr>
@@ -20,8 +20,8 @@
     <h4>Keypress listener</h4>
     <div class="form-group">
       <input type="text" class="form-control"
-      v-on:keyup='increaseKeyPressCount'
-      v-on:keyup.delete='increaseBackspaceCount'>
+      v-on:keyup='keypress_count++'
+      v-on:keyup.delete='backspace_count++'>
       <p style="padding:10px">character count: {{character_count}}, backspaces count: {{backspace_count}}</p>
     </div>
   </div>
@@ -44,22 +44,10 @@
       }
     },
     methods:{
-      increase: function(){
-        this.counter++;
-      },
-      decrease: function(){
-        this.counter--;
-      },
       updateCoordinates: function(event){
         this.x = event.clientX;
         this.y = event.clientY;
       },
-      increaseKeyPressCount: function(){
-        this.keypress_count++;
-      },
-      increaseBackspaceCount: function(){
-        this.backspace_count++;
-      }
     }
   });
 </script>
