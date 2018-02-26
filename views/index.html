@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Vue.js basics</title>
+   <!--  bootstrap -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <!-- CSS -->
+   <link rel='stylesheet', href='/stylesheets/style.css'>
+   <!--  Vue.js -->
+   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+ </head>
+ <body>
+   <div class="container" id="app">
+     <div class="row">
+       <div class="col-6">
+         <h1>Vue.js basics</h1>
+         <p>{{description}}</p>
+       </div>
+       <div class="col-6">
+         <p>Update the description from this input field</p>
+         <input type="text" v-on:input='updateTitle'>
+       </div>
+     </div>
+   </div>
+
+   <script type="text/javascript">
+   new Vue({
+     el: '#app',
+     data: {
+       description: 'Learning in progress...'
+     },
+     methods: {
+       updateTitle: function(event){
+         this.description = event.target.value;
+       }
+     }
+   });
+   </script>
+ </body>
+</html>

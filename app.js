@@ -6,7 +6,8 @@ var index = require('./routes/index');
 var app = express();
 
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 app.use(sassMiddleware({
 	src: path.join(__dirname, 'public'),
