@@ -1,0 +1,61 @@
+<% extend('../layout') %>
+
+<div class="container" id="app">
+<div class="row">
+  <div class="col-12" style="text-align:center">
+    <button class="btn btn-primary"
+    @click="isLarge = !isLarge"
+    :class="{ 'btn-lg': isLarge }">
+    {{size_text}}
+    </button>
+    <hr>
+    <button class="btn"
+    @click="changeButtonStyle"
+    :class="btnStyle">
+    change style
+    </button>
+    <br>
+    <div style="margin:10px">
+      <input type="checkbox" id="buttonOutline" v-model='outline'>
+      <label for="buttonOutline">Outline</label>
+    </div>
+  </div>
+</div>
+</div>
+
+<script type="text/javascript">
+  new Vue({
+    el: '#app',
+    data: {
+      isLarge: false,
+      styleIndex: 0,
+      buttonStyles: ['primary', 'secondary', 'success', 'info', 'warning',
+      'danger', 'dark'],
+      outline: false
+    },
+    computed: {
+      size_text: function(){
+        return !this.isLarge? 'enlarge' : 'decrease';
+      },
+      currentStyle: function(){
+        return this.buttonStyles[this.styleIndex];
+      },
+      outlineName: function(){
+        return this.outline? 'outline-':'';
+      },
+      btnStyle: function(){
+        return 'btn-'+ this.outlineName +this.currentStyle;
+      }
+    },
+    methods: {
+      changeButtonStyle: function(){
+        if(this.styleIndex + 1 >= this.buttonStyles.length){
+          this.styleIndex = 0;
+        }
+        else{
+          this.styleIndex++;
+        }
+      }
+    }
+  });
+</script>

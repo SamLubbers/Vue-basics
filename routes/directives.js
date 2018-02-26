@@ -9,4 +9,7 @@ router.get('/events', (req, res) => {
   res.render('directives/events');
 });
 
+router.get('/dynamic-styling', (req, res) => {
+  res.render('directives/dynamic-styling');
+});
 module.exports = router;
