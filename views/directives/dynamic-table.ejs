@@ -57,7 +57,12 @@
     },
     methods:{
       addRow: function(){
-        this.users.push(this.newUser);
+        if (objectHasEmptyValue(this.newUser)) {
+
+        }
+        else{
+          this.users.push(this.newUser);
+        }
       }
     },
     created(){
@@ -76,4 +81,13 @@
         .catch((err) => this.apiErrorMessage = err.message);
     }
   });
+function objectHasEmptyValue(obj) {
+  for (var k in obj) {
+    if (!obj[k]) {
+      return true;
+    }
+  }
+  return false;
+
+}
 </script>
