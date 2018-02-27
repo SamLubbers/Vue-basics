@@ -4,27 +4,56 @@
 <div class="row">
   <div class="col-12">
     <template v-if="users.length > 0">
-      <ul>
-        <li v-for="user in users">{{user}}</li>
-      </ul>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th v-for='header in schema' scope="col">{{ header }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for='user in users'>
+            <td v-for='(value, key) in user'>{{ value }}</td>
+          </tr>
+          <tr>
+            <td v-for='(value, key) in newUser'>
+              <input type="text" :placeholder="key" v-model='newUser[key]'>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </template>
     <template v-else>
-      <p>Failed loading table data</p>
-      <p>Error: {{ apiErrorMessage }}</p>
+      <p>Failed creating table</p>
+      <p v-if='apiErrorMessage'> API Error: {{ apiErrorMessage }}</p>
     </template>
   </div>
 </div>
 </div>
 
 <script type="text/javascript">
-  new Vue({
+  var v = new Vue({
     el: '#app',
     data: {
       users: [],
+      newUser: {},
       apiErrorMessage: ''
     },
+    computed:{
+      schema: function(){
+        if(this.users.length > 0){
+            return Object.keys(this.users[0]);
+        }
+      }
+    },
+    watch:{
+      schema: function(schema){
+        newUser = {};
+        schema.map((k, i) => newUser[k] = '');
+        this.newUser = Object.assign({}, newUser);
+      }
+    },
     created(){
-      fetch('https://randomuser.me/api/?results=20')
+      fetch('https://randomuser.me/api/?results=15')
         .then(response => response.json())
         .then(json => {
           for (json_user of json.results) {
