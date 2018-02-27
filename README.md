@@ -1,4 +1,4 @@
-# D3-basics
+# Vue.js basics
 Basic Vue.js features and applications learned from the course [Vue.js 2 - The Complete Guide](https://www.udemy.com/vuejs-2-the-complete-guide/)
 
 ## prerequisites
