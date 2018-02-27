@@ -16,7 +16,10 @@
           </tr>
           <tr>
             <td v-for='(value, key) in newUser'>
-              <input type="text" :placeholder="key" v-model='newUser[key]'>
+              <input type="text"
+              :placeholder="key"
+              v-model='newUser[key]'
+              @keydown.enter='addRow'>
             </td>
           </tr>
         </tbody>
@@ -31,7 +34,7 @@
 </div>
 
 <script type="text/javascript">
-  var v = new Vue({
+  new Vue({
     el: '#app',
     data: {
       users: [],
@@ -50,6 +53,11 @@
         newUser = {};
         schema.map((k, i) => newUser[k] = '');
         this.newUser = Object.assign({}, newUser);
+      }
+    },
+    methods:{
+      addRow: function(){
+        this.users.push(this.newUser);
       }
     },
     created(){
