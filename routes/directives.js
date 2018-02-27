@@ -12,4 +12,10 @@ router.get('/events', (req, res) => {
 router.get('/dynamic-styling', (req, res) => {
   res.render('directives/dynamic-styling');
 });
+
+
+router.get('/dynamic-table', (req, res) => {
+  res.render('directives/dynamic-table');
+});
+
 module.exports = router;

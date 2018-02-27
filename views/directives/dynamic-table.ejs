@@ -1,0 +1,42 @@
+<% extend('../layout') %>
+
+<div class="container" id="app">
+<div class="row">
+  <div class="col-12">
+    <template v-if="users.length > 0">
+      <ul>
+        <li v-for="user in users">{{user}}</li>
+      </ul>
+    </template>
+    <template v-else>
+      <p>Failed loading table data</p>
+      <p>Error: {{ apiErrorMessage }}</p>
+    </template>
+  </div>
+</div>
+</div>
+
+<script type="text/javascript">
+  new Vue({
+    el: '#app',
+    data: {
+      users: [],
+      apiErrorMessage: ''
+    },
+    created(){
+      fetch('https://randomuser.me/api/?results=20')
+        .then(response => response.json())
+        .then(json => {
+          for (json_user of json.results) {
+            user = {
+              'firstName':json_user.name.first,
+              'lastName':json_user.name.last,
+              'email': json_user.email
+            };
+            this.users.push(user);
+          };
+        })
+        .catch((err) => this.apiErrorMessage = err.message);
+    }
+  });
+</script>
