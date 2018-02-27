@@ -4,26 +4,31 @@
 <div class="row">
   <div class="col-12">
     <template v-if="users.length > 0">
-      <table class="table table-bordered">
+      <table class="table table-bordered table-hover">
         <thead>
           <tr>
             <th v-for='header in schema' scope="col">{{ header }}</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for='user in users'>
+          <tr class="hoverHighlightInvert"
+          v-for='user in users'
+          @click='removeUser(user)'>
             <td v-for='(value, key) in user'>{{ value }}</td>
           </tr>
-          <tr>
+          <tr style="background-color: white">
             <td v-for='(value, key) in newUser'>
               <input type="text"
               :placeholder="key"
               v-model='newUser[key]'
-              @keydown.enter='addRow'>
+              @keydown.enter='addUser'>
             </td>
           </tr>
         </tbody>
       </table>
+      <p style="color:red" v-if='invalidInput'>
+        Please fill in all input fields
+      </p>
     </template>
     <template v-else>
       <p>Failed creating table</p>
@@ -39,7 +44,8 @@
     data: {
       users: [],
       newUser: {},
-      apiErrorMessage: ''
+      apiErrorMessage: '',
+      invalidInput: false
     },
     computed:{
       schema: function(){
@@ -56,13 +62,17 @@
       }
     },
     methods:{
-      addRow: function(){
+      addUser: function(){
         if (objectHasEmptyValue(this.newUser)) {
-
+          this.invalidInput = true;
         }
         else{
+          this.invalidInput = false;
           this.users.push(this.newUser);
         }
+      },
+      removeUser: function(user){
+        this.users.splice(this.users.indexOf(user), 1);
       }
     },
     created(){
