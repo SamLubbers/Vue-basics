@@ -16,4 +16,8 @@ router.get('/3', (req, res) => {
 router.get('/4', (req, res) => {
   res.render('exercises/4');
 });
+
+router.get('/5', (req, res) => {
+  res.render('exercises/5');
+});
 module.exports = router;
