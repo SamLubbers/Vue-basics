@@ -18,8 +18,8 @@
 		</div>
 	</div>
 </div>
-<div class="row shadowed padded" id="controls">
-  <div class="col-12 center">
+<div class="row shadowed" id="controls">
+  <div class="col-12 center padded">
 		<template v-if='newgame'>
 			<button class="btn btn-success" @click='newgame = !newgame'>
 				start new game
@@ -38,9 +38,16 @@
 <template v-if='!newgame'>
 	<div class="row shadowed" id="record">
 	  <div class="col-12 center">
-
-	  </div>
-	</div>
+			<template v-for='action in record'>
+				<div class="alert" :class="action.attacker == 'player' ? alert-primary : alert-danger">
+					<template v-if="action.type == 'attack'">
+						{{action.attacker}} hits {{action.receiver}} with {{action.force}}
+					</template>
+					<template v-else>
+						{{action.receiver}} heals himself with {{action.force}}
+					</template>
+				</div>
+			</template>
 </template>
 </div>
 
@@ -48,7 +55,17 @@
   var app = new Vue({
     el: '#app',
     data: {
-			newgame: true
-    }
+			newgame: true,
+			minhealth: 0,
+			maxhealth: 100,
+			playerhealth: 100,
+			bothealth: 100,
+			record: []
+    },
+		computed:{
+			alertType: function(){
+
+			}
+		}
   });
 </script>
