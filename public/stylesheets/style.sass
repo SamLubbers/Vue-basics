@@ -13,3 +13,17 @@ body
   background: $vue-green !important
   color: white
   cursor: pointer
+
+.center
+	text-align: center
+
+=box-shadow($radius)
+  box-shadow: 0 0 $radius 0 #CCC
+  -moz-box-shadow: 0 0 $radius 0 #CCC
+  -webkit-box-shadow: 0 0 $radius 0 #CCC
+
+.shadowed
+	+box-shadow(3px)
+
+.caps
+	text-transform: uppercase
