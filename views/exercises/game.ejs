@@ -6,14 +6,14 @@
   <div class="col-6 center">
 		<h2>You</h2>
 		<div class="rectangle">
-			<div class="healthbar">
+			<div class="healthbar" :style="{width: playerhealth + '%'}">
 			</div>
 		</div>
   </div>
 	<div class="col-6 center">
 		<h2 class="caps">Bot</h2>
 		<div class="rectangle">
-			<div class="healthbar">
+			<div class="healthbar" :style="{width: bothealth + '%'}">
 			</div>
 		</div>
 	</div>
@@ -38,7 +38,7 @@
 <template v-if='!newgame'>
 	<div class="row shadowed spaced" id="record">
 	  <div class="col-12 center">
-			<template v-for='action in record'>
+			<template v-for='action in recordChronologicalOrder'>
 				<div class="alert" :class="action.attacker == 'player' ? 'alert-primary' : 'alert-danger'">
 					<template v-if="action.type == 'attack'">
 						{{action.attacker}} hits {{action.receiver}} with {{action.force}}
@@ -66,17 +66,26 @@
       botAttackMaxForce: 10,
 			record: []
     },
-    // watch:{
-    //   newgame: function(){
-    //     // on new game reset health
-    //   },
-    //   playerhealth: function(){
-    //     // if player health 0 trigger alert
-    //   },
-    //   bothealth: function(){
-    //     // if bot health 0 trigger alert
-    //   }
-    // },
+    computed:{
+      recordChronologicalOrder: function(){
+        return this.record.reverse();
+      }
+    },
+    watch:{
+      newgame: function(newgame){
+        if(newgame){
+          this.playerhealth = this.maxhealth;
+          this.bothealth = this.maxhealth;
+          this.record = [];
+        }
+      },
+      playerhealth: function(){
+        // if player health 0 trigger alert
+      },
+      bothealth: function(){
+        // if bot health 0 trigger alert
+      }
+    },
     methods: {
       recordAction(type, attacker, receiver, force){
         newrecord = {
@@ -92,7 +101,7 @@
       },
       botattack(){
         force = this.computeForce(this.botAttackMaxForce);
-        this.playerhealth -= force
+        this.playerhealth -= force;
         this.recordAction('attack', "bot", "player", force);
       },
       playerAttack(){
@@ -109,7 +118,7 @@
       },
       playerHeal(){
         force = this.computeForce(this.playerHealMaxForce);
-        this.playerHealth += force;
+        this.playerhealth += force;
         this.recordAction('heal', "player", null, force);
         this.botattack();
       }
