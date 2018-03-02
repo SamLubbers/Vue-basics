@@ -35,7 +35,7 @@
 		</template>
   </div>
 </div>
-<template v-if='!newgame'>
+<template v-if='!newgame && record.length > 0'>
 	<div class="row shadowed spaced" id="record">
 	  <div class="col-12 center">
 			<template v-for='action in recordChronologicalOrder'>
@@ -64,7 +64,7 @@
       playerAttackSpecialMaxforce: 15,
       playerHealMaxForce: 7,
       botAttackMaxForce: 10,
-			record: []
+			record: [],
     },
     computed:{
       recordChronologicalOrder: function(){
@@ -79,11 +79,25 @@
           this.record = [];
         }
       },
-      playerhealth: function(){
-        // if player health 0 trigger alert
+      playerhealth: function(playerhealth){
+        if(playerhealth <= 0){
+          this.playerhealth = 0;
+          alert('bot wins!')
+          this.newgame = true;
+        }
+        else if(playerhealth > 100){
+          this.playerhealth = 100;
+        }
       },
-      bothealth: function(){
-        // if bot health 0 trigger alert
+      bothealth: function(bothealth){
+        if(bothealth <= 0){
+          this.bothealth = 0;
+          alert('player wins!')
+          this.newgame = true;
+        }
+        else if(bothealth > 100){
+          this.bothealth = 100;
+        }
       }
     },
     methods: {
