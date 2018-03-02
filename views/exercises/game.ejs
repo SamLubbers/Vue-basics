@@ -18,8 +18,8 @@
 		</div>
 	</div>
 </div>
-<div class="row shadowed" id="controls">
-  <div class="col-12 center padded">
+<div class="row shadowed spaced" id="controls">
+  <div class="col-12 center justify">
 		<template v-if='newgame'>
 			<button class="btn btn-success" @click='newgame = !newgame'>
 				start new game
@@ -36,7 +36,7 @@
   </div>
 </div>
 <template v-if='!newgame'>
-	<div class="row shadowed" id="record">
+	<div class="row shadowed spaced" id="record">
 	  <div class="col-12 center">
 			<template v-for='action in record'>
 				<div class="alert" :class="action.attacker == 'player' ? alert-primary : alert-danger">

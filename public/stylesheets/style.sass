@@ -19,11 +19,15 @@ body
 
 =box-shadow($radius)
   box-shadow: 0 0 $radius 0 #CCC
-  -moz-box-shadow: 0 0 $radius 0 #CCC
   -webkit-box-shadow: 0 0 $radius 0 #CCC
 
 .shadowed
-	+box-shadow(3px)
+	+box-shadow(10px)
 
 .caps
 	text-transform: uppercase
+
+.spaced
+	width: 100%
+	padding: 20px 0
+	margin: 20px 0
