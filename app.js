@@ -26,7 +26,10 @@ app.use('/', index);
 app.use('/directives', directives);
 app.use('/exercises', exercises);
 
-app.listen('3000', () => console.log(
-	'Application listening on http://localhost:3000/'));
+// app.listen('3000', () => console.log(
+// 	'Application listening on http://localhost:3000/'));
+
+app.listen('3000', '0.0.0.0', () => console.log(
+	'Application listening on http://0.0.0.0:3000/'));
 
 module.exports = app;
