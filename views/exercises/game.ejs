@@ -6,23 +6,23 @@
   <div class="col-6 center">
 		<h2>You</h2>
 		<div class="rectangle">
-			<div class="healthbar" :style="{width: playerhealth + '%'}">
+			<div class="healthbar" :style="{width: playerHealth + '%'}">
 			</div>
 		</div>
   </div>
 	<div class="col-6 center">
 		<h2 class="caps">Bot</h2>
 		<div class="rectangle">
-			<div class="healthbar" :style="{width: bothealth + '%'}">
+			<div class="healthbar" :style="{width: botHealth + '%'}">
 			</div>
 		</div>
 	</div>
 </div>
 <div class="row shadowed spaced" id="controls">
     <div class="col-12 center justify">
-        <template v-if='newgame || winner'>
+        <template v-if='newGame || winner'>
           <h2 v-if='winner'>{{winner}} win<span v-if='winner != "you"'>s</span> </h2>
-          <button class="btn btn-success" @click='newgame = !newgame'>
+          <button class="btn btn-success" @click='newGame = !newGame'>
             New game
           </button>
         </template>
@@ -30,14 +30,14 @@
           <button class="btn btn-danger btn-margin" @click='playerAttack'>attack</button>
           <button class="btn btn-warning btn-margin" @click='playerSpecialAttack'>special attack</button>
           <button class="btn btn-success btn-margin" @click='playerHeal'>heal</button>
-          <button class="btn btn-secondary btn-margin" @click='newgame = !newgame'>
+          <button class="btn btn-secondary btn-margin" @click='newGame = !newGame'>
             give up
           </button>
         </template>
     </div>
 
 </div>
-<template v-if='!newgame && record.length > 0'>
+<template v-if='!newGame && record.length > 0'>
 	<div class="row shadowed spaced" id="record">
 	  <div class="col-12 center">
 			<template v-for='action in recordChronologicalOrder'>
@@ -57,15 +57,14 @@
   var app = new Vue({
     el: '#app',
     data: {
-			newgame: true,
-			minhealth: 0,
-			maxhealth: 100,
-			playerhealth: 100,
-			bothealth: 100,
-      playerAttackMaxforce: 5,
-      playerAttackSpecialMaxforce: 15,
-      playerHealMaxForce: 7,
-      botAttackMaxForce: 10,
+			newGame: true,
+			minHealth: 0,
+			maxHealth: 100,
+			playerHealth: 100,
+			botHealth: 100,
+      attackMaxforce: 5,
+      specialAttackMaxforce: 15,
+      playerMaxHeal: 10,
 			record: [],
       winner:''
     },
@@ -75,30 +74,30 @@
       }
     },
     watch:{
-      newgame: function(newgame){
-        if(newgame){
-          this.playerhealth = this.maxhealth;
-          this.bothealth = this.maxhealth;
+      newGame: function(newGame){
+        if(newGame){
+          this.playerHealth = this.maxHealth;
+          this.botHealth = this.maxHealth;
           this.record = [];
           this.winner = '';
         }
       },
-      playerhealth: function(playerhealth){
-        if(playerhealth <= 0){
-          this.playerhealth = 0;
+      playerHealth: function(playerHealth){
+        if(playerHealth <= 0){
+          this.playerHealth = 0;
           this.winner = 'bot';
         }
-        else if(playerhealth > 100){
-          this.playerhealth = 100;
+        else if(playerHealth > 100){
+          this.playerHealth = 100;
         }
       },
-      bothealth: function(bothealth){
-        if(bothealth <= 0){
-          this.bothealth = 0;
+      botHealth: function(botHealth){
+        if(botHealth <= 0){
+          this.botHealth = 0;
           this.winner = 'you';
         }
-        else if(bothealth > 100){
-          this.bothealth = 100;
+        else if(botHealth > 100){
+          this.botHealth = 100;
         }
       }
     },
@@ -115,28 +114,28 @@
       computeForce(maxforce){
         return Math.round(Math.random() * maxforce);
       },
-      botattack(){
-        force = this.computeForce(this.botAttackMaxForce);
-        this.playerhealth -= force;
+      botattack(maxForce){
+        force = this.computeForce(maxForce) + 1;
+        this.playerHealth -= force;
         this.recordAction('attack', "bot", "player", force);
       },
       playerAttack(){
-        force = this.computeForce(this.playerAttackMaxforce);
-        this.bothealth -= force;
+        force = this.computeForce(this.attackMaxforce);
+        this.botHealth -= force;
         this.recordAction('attack', "player", "bot", force);
-        this.botattack();
+        this.botattack(this.attackMaxforce);
       },
       playerSpecialAttack(){
-        force = this.computeForce(this.playerAttackSpecialMaxforce);
-        this.bothealth -= force;
+        force = this.computeForce(this.specialAttackMaxforce);
+        this.botHealth -= force;
         this.recordAction('attack', "player", "bot", force);
-        this.botattack();
+        this.botattack(this.specialAttackMaxforce);
       },
       playerHeal(){
-        force = this.computeForce(this.playerHealMaxForce);
-        this.playerhealth += force;
+        force = this.computeForce(this.playerMaxHeal);
+        this.playerHealth += force;
         this.recordAction('heal', "player", null, force);
-        this.botattack();
+        this.botattack(Math.random() > 0.5? this.specialAttackMaxforce : this.attackMaxforce);
       }
     }
   });
