@@ -26,9 +26,9 @@
 			</button>
 		</template>
 		<template v-else>
-			<button class="btn btn-danger">attack</button>
-			<button class="btn btn-warning">special attack</button>
-			<button class="btn btn-success">heal</button>
+			<button class="btn btn-danger" @click='playerAttack'>attack</button>
+			<button class="btn btn-warning" @click='playerSpecialAttack'>special attack</button>
+			<button class="btn btn-success" @click='playerHeal'>heal</button>
 			<button class="btn btn-secondary" @click='newgame = !newgame'>
 				give up
 			</button>
@@ -39,12 +39,12 @@
 	<div class="row shadowed spaced" id="record">
 	  <div class="col-12 center">
 			<template v-for='action in record'>
-				<div class="alert" :class="action.attacker == 'player' ? alert-primary : alert-danger">
+				<div class="alert" :class="action.attacker == 'player' ? 'alert-primary' : 'alert-danger'">
 					<template v-if="action.type == 'attack'">
 						{{action.attacker}} hits {{action.receiver}} with {{action.force}}
 					</template>
 					<template v-else>
-						{{action.receiver}} heals himself with {{action.force}}
+						{{action.attacker}} heals himself with {{action.force}}
 					</template>
 				</div>
 			</template>
@@ -60,12 +60,59 @@
 			maxhealth: 100,
 			playerhealth: 100,
 			bothealth: 100,
+      playerAttackMaxforce: 5,
+      playerAttackSpecialMaxforce: 15,
+      playerHealMaxForce: 7,
+      botAttackMaxForce: 10,
 			record: []
     },
-		computed:{
-			alertType: function(){
-
-			}
-		}
+    // watch:{
+    //   newgame: function(){
+    //     // on new game reset health
+    //   },
+    //   playerhealth: function(){
+    //     // if player health 0 trigger alert
+    //   },
+    //   bothealth: function(){
+    //     // if bot health 0 trigger alert
+    //   }
+    // },
+    methods: {
+      recordAction(type, attacker, receiver, force){
+        newrecord = {
+          'type':type,
+          'attacker':attacker,
+          'receiver':receiver,
+          'force': force
+        };
+        this.record.push(newrecord);
+      },
+      computeForce(maxforce){
+        return Math.round(Math.random() * maxforce);
+      },
+      botattack(){
+        force = this.computeForce(this.botAttackMaxForce);
+        this.playerhealth -= force
+        this.recordAction('attack', "bot", "player", force);
+      },
+      playerAttack(){
+        force = this.computeForce(this.playerAttackMaxforce);
+        this.bothealth -= force;
+        this.recordAction('attack', "player", "bot", force);
+        this.botattack();
+      },
+      playerSpecialAttack(){
+        force = this.computeForce(this.playerAttackSpecialMaxforce);
+        this.bothealth -= force;
+        this.recordAction('attack', "player", "bot", force);
+        this.botattack();
+      },
+      playerHeal(){
+        force = this.computeForce(this.playerHealMaxForce);
+        this.playerHealth += force;
+        this.recordAction('heal', "player", null, force);
+        this.botattack();
+      }
+    }
   });
 </script>
