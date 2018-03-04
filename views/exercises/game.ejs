@@ -7,6 +7,7 @@
 		<h2>You</h2>
 		<div class="rectangle">
 			<div class="healthbar" :style="{width: playerHealth + '%'}">
+				<p class="healthText">{{playerHealth}}</p>
 			</div>
 		</div>
   </div>
@@ -14,6 +15,7 @@
 		<h2 class="caps">Bot</h2>
 		<div class="rectangle">
 			<div class="healthbar" :style="{width: botHealth + '%'}">
+				<p class="healthText">{{botHealth}}</p>
 			</div>
 		</div>
 	</div>
@@ -129,13 +131,13 @@
         force = this.computeForce(this.specialAttackMaxforce);
         this.botHealth -= force;
         this.recordAction('attack', "player", "bot", force);
-        this.botattack(this.specialAttackMaxforce);
+        this.botattack(this.attackMaxforce);
       },
       playerHeal(){
         force = this.computeForce(this.playerMaxHeal);
         this.playerHealth += force;
         this.recordAction('heal', "player", null, force);
-        this.botattack(Math.random() > 0.5? this.specialAttackMaxforce : this.attackMaxforce);
+        this.botattack(Math.random() > 0.8? this.specialAttackMaxforce : this.attackMaxforce);
       }
     }
   });
