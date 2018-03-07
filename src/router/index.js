@@ -6,6 +6,7 @@ import DynamicTable from '@/components/directives/DynamicTable'
 import DynamicStyling from '@/components/directives/DynamicStyling'
 import Events from '@/components/directives/Events'
 import Game from '@/components/exercises/Game'
+import Ex1 from '@/components/exercises/Ex1'
 
 Vue.use(Router)
 
@@ -34,5 +35,9 @@ export default new Router({
     path: '/exercises/Game',
     name: 'Game',
     component: Game
+  }, {
+    path: '/exercises/Ex1',
+    name: 'Ex1',
+    component: Ex1
   }]
 })

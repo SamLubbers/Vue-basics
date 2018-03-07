@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-12" style="text-align:center">
       <h4>Click listener</h4>
-      <!-- counter component is a global component -->
+      <!-- counter is a global component -->
       <counter/>
       <hr>
       <h4>Hover listener</h4>
