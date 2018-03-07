@@ -13,7 +13,7 @@
 <script>
 export default {
   name: 'DynamicLink',
-  data() {
+  data () {
     return {
       dynamiclink: 'https://vuejs.org'
     }

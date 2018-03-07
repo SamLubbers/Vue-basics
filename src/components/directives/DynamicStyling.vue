@@ -36,11 +36,10 @@
 </div>
 </template>
 
-
 <script>
 export default {
   name: 'DynamicStyling',
-  data() {
+  data () {
     return {
       styleIndex: 0,
       buttonStyles: ['primary', 'secondary', 'success', 'info', 'warning',
@@ -54,38 +53,38 @@ export default {
     }
   },
   computed: {
-    currentStyle: function() {
-      return this.buttonStyles[this.styleIndex];
+    currentStyle: function () {
+      return this.buttonStyles[this.styleIndex]
     },
-    outlineClass: function() {
-      return this.outline ? 'outline-' : '';
+    outlineClass: function () {
+      return this.outline ? 'outline-' : ''
     },
-    btnStyle: function() {
-      return 'btn-' + this.outlineClass + this.currentStyle;
+    btnStyle: function () {
+      return 'btn-' + this.outlineClass + this.currentStyle
     },
-    btnSize: function() {
-      if (this.buttonSize == 'medium') {
-        return null;
-      } else if (this.buttonSize == 'small') {
-        return 'btn-sm';
-      } else if (this.buttonSize == 'large') {
-        return 'btn-lg';
+    btnSize: function () {
+      if (this.buttonSize === 'medium') {
+        return null
+      } else if (this.buttonSize === 'small') {
+        return 'btn-sm'
+      } else if (this.buttonSize === 'large') {
+        return 'btn-lg'
       };
     },
-    textStyle: function() {
+    textStyle: function () {
       return {
         'font-size': this.fontSize + 'px',
         'color': this.fontColor,
         'font-family': this.fontFamily
-      };
+      }
     }
   },
   methods: {
-    changeButtonStyle: function() {
+    changeButtonStyle: function () {
       if (this.styleIndex + 1 >= this.buttonStyles.length) {
-        this.styleIndex = 0;
+        this.styleIndex = 0
       } else {
-        this.styleIndex++;
+        this.styleIndex++
       }
     }
   }

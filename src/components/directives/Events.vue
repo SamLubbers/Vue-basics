@@ -31,7 +31,7 @@
 <script>
 export default {
   name: 'Events',
-  data() {
+  data () {
     return {
       counter: 0,
       x: 0,
@@ -41,15 +41,15 @@ export default {
     }
   },
   computed: {
-    character_count: function() {
-      return this.keypress_count - this.backspace_count;
+    character_count: function () {
+      return this.keypress_count - this.backspace_count
     }
   },
   methods: {
-    updateCoordinates: function(event) {
-      this.x = event.clientX;
-      this.y = event.clientY;
-    },
+    updateCoordinates: function (event) {
+      this.x = event.clientX
+      this.y = event.clientY
+    }
   }
 }
 </script>
