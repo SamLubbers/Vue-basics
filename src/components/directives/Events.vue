@@ -3,12 +3,10 @@
   <div class="row">
     <div class="col-12" style="text-align:center">
       <h4>Click listener</h4>
-      <counter></counter>
+      <counter/>
       <hr>
       <h4>Hover listener</h4>
-      <h2 class="hoverHighlight" @mousemove="updateCoordinates">
-        X: {{ x }} Y: {{ y }}
-      </h2>
+      <coords/>
       <hr>
       <h4>Keypress listener</h4>
       <div class="form-group">
@@ -27,8 +25,6 @@ export default {
   name: 'Events',
   data () {
     return {
-      x: 0,
-      y: 0,
       keypress_count: 0,
       backspace_count: 0
     }
@@ -36,12 +32,6 @@ export default {
   computed: {
     character_count: function () {
       return this.keypress_count - this.backspace_count
-    }
-  },
-  methods: {
-    updateCoordinates: function (event) {
-      this.x = event.clientX
-      this.y = event.clientY
     }
   }
 }

@@ -5,11 +5,13 @@ import App from './App'
 import router from './router'
 
 import Counter from './components/events/Counter'
+import MouseCoordinates from './components/events/MouseCoordinates'
 
 Vue.config.productionTip = false
 
 // global components
 Vue.component('counter', Counter)
+Vue.component('coords', MouseCoordinates)
 
 /* eslint-disable no-new */
 new Vue({
