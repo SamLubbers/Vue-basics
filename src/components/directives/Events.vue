@@ -3,13 +3,7 @@
   <div class="row">
     <div class="col-12" style="text-align:center">
       <h4>Click listener</h4>
-      <h2>{{ counter }}</h2>
-      <button class="btn btn-primary" @click='counter--'>
-        <i class="fas fa-minus"></i>
-      </button>
-      <button class="btn btn-primary" @click='counter++'>
-        <i class="fas fa-plus"></i>
-      </button>
+      <counter></counter>
       <hr>
       <h4>Hover listener</h4>
       <h2 class="hoverHighlight" @mousemove="updateCoordinates">
@@ -33,7 +27,6 @@ export default {
   name: 'Events',
   data () {
     return {
-      counter: 0,
       x: 0,
       y: 0,
       keypress_count: 0,

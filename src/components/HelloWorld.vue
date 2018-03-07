@@ -1,5 +1,5 @@
 <template>
-  <div class="container" id="app">
+  <div class="container">
     <div class="row">
       <div class="col-4">
         <h1>Vue.js basics</h1>
