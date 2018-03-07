@@ -6,12 +6,14 @@ import router from './router'
 
 import Counter from './components/events/Counter'
 import MouseCoordinates from './components/events/MouseCoordinates'
+import KeypressCounter from './components/events/KeypressCounter'
 
 Vue.config.productionTip = false
 
 // global components
 Vue.component('counter', Counter)
 Vue.component('coords', MouseCoordinates)
+Vue.component('keycount', KeypressCounter)
 
 /* eslint-disable no-new */
 new Vue({
