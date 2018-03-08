@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import DynamicLink from '@/components/directives/DynamicLink'
-import DynamicTable from '@/components/directives/DynamicTable'
-import DynamicStyling from '@/components/directives/DynamicStyling'
-import Events from '@/components/directives/Events'
-import Game from '@/components/exercises/Game'
-import Ex1 from '@/components/exercises/Ex1'
+import HelloWorld from '@/HelloWorld'
+import DynamicLink from '@/examples/DynamicLink'
+import DynamicTable from '@/examples/DynamicTable'
+import DynamicStyling from '@/examples/DynamicStyling'
+import Events from '@/examples/Events'
+import Game from '@/exercises/Game'
+import Ex1 from '@/exercises/Ex1'
 
 Vue.use(Router)
 
