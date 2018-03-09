@@ -17,7 +17,14 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <quote-container v-for='(quote, index) in quotes' :key='index' :quote='quote' @quoteClicked='quotes.splice(index, 1)'></quote-container>
+        <template v-if='quotes.length > 0'>
+          <quote-container v-for='(quote, index) in quotes' :key='index' :quote='quote' @quoteClicked='quotes.splice(index, 1)'></quote-container>
+        </template>
+        <template v-else>
+          <div class="center" style="padding: 2rem">
+            <p>Please add a new quote in the input above!</p>
+          </div>
+        </template>
       </div>
     </div>
   </div>
@@ -43,6 +50,8 @@ export default {
     addQuote (newQuote) {
       if (this.quotes.length < this.maxQuotes) {
         this.quotes.unshift(newQuote)
+      } else {
+        alert('You have reached the maximum number of quotes, please delete a quote before adding a new one')
       }
     }
   }
