@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 .quote-container
   padding: 1rem 2rem
   margin: 1rem 0

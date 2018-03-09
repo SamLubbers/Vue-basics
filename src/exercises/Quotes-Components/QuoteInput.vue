@@ -20,12 +20,11 @@ export default {
   },
   methods: {
     addQuote () {
-      this.$emit('addQuote', this.newQuote)
-      this.newQuote = ''
+      if (this.newQuote) {
+        this.$emit('addQuote', this.newQuote)
+        this.newQuote = ''
+      }
     }
   }
 }
 </script>
-<style scoped>
-
-</style>
