@@ -5,9 +5,9 @@
       <label for="newquoteinput" id="newquotelabel" class="input-group-text">New Quote:</label>
       </div>
       <input type="text" class="form-control" id="newquoteinput" aria-describedby="newquotelabel"
-      v-model='newQuote' @keypress.enter='addQuote(newQuote)'>
+      v-model='newQuote' @keypress.enter='addQuote'>
     </div>
-    <button class="btn btn-primary inline-margin" @click='addQuote(newQuote)'>Add quote</button>
+    <button class="btn btn-primary inline-margin" @click='addQuote'>Add quote</button>
   </div>
 </template>
 
@@ -18,10 +18,10 @@ export default {
       newQuote: ''
     }
   },
-  props: {
-    addQuote: {
-      type: Function,
-      required: true
+  methods: {
+    addQuote () {
+      this.$emit('addQuote', this.newQuote)
+      this.newQuote = ''
     }
   }
 }
