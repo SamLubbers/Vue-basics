@@ -7,6 +7,7 @@ import DynamicStyling from '@/examples/DynamicStyling'
 import Events from '@/examples/Events'
 import Game from '@/exercises/Game'
 import Ex1 from '@/exercises/Ex1'
+import Ex2 from '@/exercises/Ex2'
 
 Vue.use(Router)
 
@@ -39,5 +40,9 @@ export default new Router({
     path: '/exercises/Ex1',
     name: 'Ex1',
     component: Ex1
+  }, {
+    path: '/exercises/Ex2',
+    name: 'Ex2',
+    component: Ex2
   }]
 })
