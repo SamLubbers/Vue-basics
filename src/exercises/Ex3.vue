@@ -4,8 +4,7 @@
       <div class="col-12">
         <h2>Form input</h2>
         <form>
-          <label for="fullName">Full name</label>
-          <input class="form-control" type="text" id="fullName" v-model='fullName'>
+          <full-name-input v-model='fullName'></full-name-input>
           <label for="email">Email</label>
           <input class="form-control" type="text" id="email" v-model='email'>
           <label for="password">Password</label>
@@ -35,6 +34,8 @@
 </template>
 
 <script>
+import FullNameInput from './Ex3-components/FullNameInput.vue'
+
 export default {
   data () {
     return {
@@ -44,6 +45,9 @@ export default {
       'storeInDB': 'yes',
       'show': false
     }
+  },
+  components: {
+    'full-name-input': FullNameInput
   }
 }
 </script>
