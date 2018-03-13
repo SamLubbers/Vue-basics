@@ -39,7 +39,7 @@ import FullNameInput from './Ex3-components/FullNameInput.vue'
 export default {
   data () {
     return {
-      'fullName': '',
+      'fullName': 'Mike Mikers',
       'email': '',
       'password': '',
       'storeInDB': 'yes',
