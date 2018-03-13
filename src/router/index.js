@@ -5,9 +5,12 @@ import DynamicLink from '@/examples/DynamicLink'
 import DynamicTable from '@/examples/DynamicTable'
 import DynamicStyling from '@/examples/DynamicStyling'
 import Events from '@/examples/Events'
-import Game from '@/exercises/Game'
+
 import Ex1 from '@/exercises/Ex1'
 import Ex2 from '@/exercises/Ex2'
+import Ex3 from '@/exercises/Ex3'
+
+import Game from '@/exercises/Game'
 import Quotes from '@/exercises/Quotes'
 
 Vue.use(Router)
@@ -45,6 +48,10 @@ export default new Router({
     path: '/exercises/Ex2',
     name: 'Ex2',
     component: Ex2
+  }, {
+    path: '/exercises/Ex3',
+    name: 'Ex3',
+    component: Ex3
   }, {
     path: '/exercises/Quotes',
     name: 'Quotes',
