@@ -4,15 +4,31 @@
       <div class="col-12">
         <h2>Form input</h2>
         <form>
-          <input type="text" v-model='fullName'>
+          <label for="fullName">Full name</label>
+          <input class="form-control" type="text" id="fullName" v-model='fullName'>
+          <label for="email">Email</label>
+          <input class="form-control" type="text" id="email" v-model='email'>
+          <label for="password">Password</label>
+          <input class="form-control" type="password" id="password" v-model='password'>
+          <label for='storeCheckboxes'>Store in database?</label>
+          <div id='storeCheckboxes'>
+            <input type="radio" v-model='storeInDB' id="yes" value="yes">
+            <label for="yes">yes</label>
+            <input type="radio" v-model='storeInDB' id="no" value="no">
+            <label for="no">no</label>
+          </div>
+          <button type="button" class="btn btn-primary" @click.prevent='show = true'>Submit</button>
         </form>
       </div>
     </div>
-    <hr>
-    <div class="row">
+    <div class="row" v-if='show'>
       <div class="col-12">
+        <hr>
         <h2>Form output</h2>
-        <b>fullName</b> {{fullName}}
+        <p><b>Full name:</b> {{fullName}}</p>
+        <p><b>Email:</b> {{email}}</p>
+        <p><b>Password:</b> {{password}}</p>
+        <p><b>Store in database:</b> {{storeInDB}}</p>
       </div>
     </div>
   </div>
@@ -22,7 +38,11 @@
 export default {
   data () {
     return {
-      'fullName': ''
+      'fullName': '',
+      'email': '',
+      'password': '',
+      'storeInDB': 'yes',
+      'show': false
     }
   }
 }
