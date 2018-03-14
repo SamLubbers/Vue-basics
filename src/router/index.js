@@ -14,6 +14,7 @@ import Ex5 from '@/exercises/Ex5'
 
 import Game from '@/exercises/Game'
 import Quotes from '@/exercises/Quotes'
+import MathQuiz from '@/exercises/MathQuiz'
 
 Vue.use(Router)
 
@@ -46,6 +47,10 @@ export default new Router({
     path: '/exercises/Quotes',
     name: 'Quotes',
     component: Quotes
+  }, {
+    path: '/exercises/MathQuiz',
+    name: 'MathQuiz',
+    component: MathQuiz
   }, {
     path: '/exercises/Ex1',
     name: 'Ex1',
