@@ -9,6 +9,7 @@ import Events from '@/examples/Events'
 import Ex1 from '@/exercises/Ex1'
 import Ex2 from '@/exercises/Ex2'
 import Ex3 from '@/exercises/Ex3'
+import Ex4 from '@/exercises/Ex4'
 
 import Game from '@/exercises/Game'
 import Quotes from '@/exercises/Quotes'
@@ -41,6 +42,10 @@ export default new Router({
     name: 'Game',
     component: Game
   }, {
+    path: '/exercises/Quotes',
+    name: 'Quotes',
+    component: Quotes
+  }, {
     path: '/exercises/Ex1',
     name: 'Ex1',
     component: Ex1
@@ -53,8 +58,8 @@ export default new Router({
     name: 'Ex3',
     component: Ex3
   }, {
-    path: '/exercises/Quotes',
-    name: 'Quotes',
-    component: Quotes
+    path: '/exercises/Ex4',
+    name: 'Ex4',
+    component: Ex4
   }]
 })
