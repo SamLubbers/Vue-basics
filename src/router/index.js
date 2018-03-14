@@ -10,6 +10,7 @@ import Ex1 from '@/exercises/Ex1'
 import Ex2 from '@/exercises/Ex2'
 import Ex3 from '@/exercises/Ex3'
 import Ex4 from '@/exercises/Ex4'
+import Ex5 from '@/exercises/Ex5'
 
 import Game from '@/exercises/Game'
 import Quotes from '@/exercises/Quotes'
@@ -61,5 +62,9 @@ export default new Router({
     path: '/exercises/Ex4',
     name: 'Ex4',
     component: Ex4
+  }, {
+    path: '/exercises/Ex5',
+    name: 'Ex5',
+    component: Ex5
   }]
 })
