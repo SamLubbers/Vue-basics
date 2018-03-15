@@ -3,8 +3,8 @@
     <div class="card-header">
       {{ question }}
     </div>
-    <div class="card-content">
-      <button class="btn btn-primary btn-block" v-for='(result, index) in results' :key='index'>{{result}}</button>
+    <div class="card-content flex-column" style="justify-content: space-between">
+      <button class="btn btn-primary btn-block" v-for='(result, index) in results' :key='index' @click='checkResult(result)'>{{result}}</button>
     </div>
   </div>
 </template>
@@ -53,15 +53,26 @@ export default {
       }
       return results
     }
+  },
+  methods: {
+    checkResult (value) {
+      if (value === this.trueResult) {
+        this.$emit('correctAnswer')
+      } else {
+        this.$emit('incorrectAnswer')
+      }
+    }
   }
 }
 </script>
 
 <style lang="sass" scoped>
 .card
-  width: 100%
+  height: 240px
 .card-header
   text-align: center
   background: #F5F5F5
   padding: .5rem
+.card-content
+  height: 100%
 </style>
