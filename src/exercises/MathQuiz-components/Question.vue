@@ -3,22 +3,22 @@
     <div class="card-header">
       {{ question }}
     </div>
-    <div class="card-content flex-column" style="justify-content: space-between">
-      <button class="btn btn-primary btn-block" v-for='(result, index) in results' :key='index' @click='checkResult(result)'>{{result}}</button>
+    <div class="card-content flex-column" style="justify-content: space-between;">
+      <button class="btn btn-primary" v-for='(result, index) in results' :key='index' @click='checkResult(result)'>{{result}}</button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: ['status'],
   data () {
     return {
-      'operation': {
-        'method': '+',
-        'values': [1, 1]
-      },
+      'operation': {},
       'numberOfResults': 4,
-      'resultsMaxVariance': 3
+      'resultsMaxVariance': 3,
+      'maxValue': 5,
+      'difficultyRate': 5
     }
   },
   computed: {
@@ -57,11 +57,25 @@ export default {
   methods: {
     checkResult (value) {
       if (value === this.trueResult) {
-        this.$emit('correctAnswer')
+        this.$emit('setStatus', 'correct')
+        this.newQuestion()
       } else {
-        this.$emit('incorrectAnswer')
+        this.$emit('setStatus', 'incorrect')
       }
+    },
+    newQuestion () {
+      this.maxValue = this.maxValue + this.difficultyRate
+      this.operation = {
+        'method': Math.random() > 0.5 ? '+' : '-',
+        'values': [this.randomNewValue(), this.randomNewValue()]
+      }
+    },
+    randomNewValue () {
+      return Math.round(Math.random() * this.maxValue) + 1
     }
+  },
+  created () {
+    this.newQuestion()
   }
 }
 </script>

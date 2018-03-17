@@ -8,10 +8,9 @@
     </div>
     <div class="row">
       <div class="col-8 offset-2">
-        <component :is='mode'/>
-        <div class="flex-row" style="justify-content: space-around; margin: 1rem 0">
-          <p>Correct Answers: {{correct}}</p> <p>Incorrect Answers: {{incorrect}}</p>
-        </div>
+        <keep-alive>
+        <component :is='mode' :status='status' @setStatus='status = $event'/>
+        </keep-alive>
       </div>
     </div>
   </div>
@@ -25,19 +24,17 @@ export default {
     return {
       'correct': 0,
       'incorrect': 0,
-      'mode': 'question'
+      'mode': 'question',
+      'status': ''
     }
   },
   components: {
     'question': Question,
     'answer': Answer
   },
-  methods: {
-    correctAnswer () {
-      this.correct++
-    },
-    incorrectAnswer () {
-      this.incorrect++
+  watch: {
+    status: function () {
+      this.mode = this.mode === 'question' ? 'answer' : 'question'
     }
   }
 }
