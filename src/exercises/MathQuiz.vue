@@ -8,9 +8,11 @@
     </div>
     <div class="row">
       <div class="col-8 offset-2">
-        <keep-alive>
-        <component :is='mode' :status='status' @setStatus='status = $event'/>
-        </keep-alive>
+        <transition name='flip' mode='out-in'>
+          <keep-alive>
+          <component :is='mode' :status='status' @setStatus='status = $event'/>
+          </keep-alive>
+        </transition>
       </div>
     </div>
   </div>
@@ -40,5 +42,22 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="sass">
+@keyframes flip-out
+  from
+    transform: rotateY(0deg)
+  to
+    transform: rotateY(90deg)
+
+@keyframes flip-in
+  from
+    transform: rotateY(90deg)
+  to
+    transform: rotateY(0deg)
+
+.flip-enter-active
+  animation: flip-in .2s linear forwards
+
+.flip-leave-active
+  animation: flip-out .2s linear forwards
 </style>

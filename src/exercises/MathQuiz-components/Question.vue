@@ -58,7 +58,11 @@ export default {
     checkResult (value) {
       if (value === this.trueResult) {
         this.$emit('setStatus', 'correct')
-        this.newQuestion()
+        // create new question after animation is over, which lasts .2seconds
+        let vm = this
+        setTimeout(function () {
+          vm.newQuestion()
+        }, 200)
       } else {
         this.$emit('setStatus', 'incorrect')
       }
