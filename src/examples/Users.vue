@@ -21,10 +21,14 @@
 
 <script>
 import ViewUsers from '@/components/user/ViewUsers'
+import NewUser from '@/components/user/NewUser'
+import DeleteUser from '@/components/user/DeleteUser'
 
 export default {
   components: {
-    viewusers: ViewUsers
+    viewusers: ViewUsers,
+    newuser: NewUser,
+    deleteuser: DeleteUser
   },
   data () {
     return {

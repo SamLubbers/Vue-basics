@@ -16,7 +16,7 @@
     </template>
     <template v-else>
       <div class="center">
-        <p>No users currently in the database. Try adding a user</p>
+        <p>No users currently in the database</p>
       </div>
     </template>
   </div>
