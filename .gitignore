@@ -15,6 +15,7 @@ yarn-error.log*
 
 # db
 *.db
+*.sqlite
 
 # python
 __pycache__/

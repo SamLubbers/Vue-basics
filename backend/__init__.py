@@ -1,9 +1,8 @@
 from flask import Flask
 
-
 def create_app():
     app = Flask(__name__)
-    app.config['DATABASE_URI'] = 'sqlite:///database.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.sqlite'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     register_db(app)

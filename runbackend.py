@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from backend import create_app
 
 if __name__ == '__main__':
