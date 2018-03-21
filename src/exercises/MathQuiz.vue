@@ -42,7 +42,7 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 @keyframes flip-out
   from
     transform: rotateY(0deg)

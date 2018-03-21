@@ -56,7 +56,7 @@
 </div>
 </template>
 
-<style lang="sass">
+<style lang="sass" scoped>
 $vue-green: #41B883
 $vue-gray: #35495E
 

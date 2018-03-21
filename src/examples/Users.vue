@@ -23,6 +23,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+body
+  background: #212529
+  color: white
+
 .navigation
   border: 1px solid #343a40
   border-right: 0
