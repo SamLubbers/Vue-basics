@@ -8,13 +8,11 @@ users = Blueprint('users', __name__, url_prefix='/api/v1.0/users')
 
 @users.route('/<email>', methods=['GET'])
 def get_user(email):
-    user = User.query.filter_by(email=email).first()
-    if not user:
-        abort(404)
+    user = User.query.filter_by(email=email).first_or_404()
 
     return jsonify({'user': object_as_dict(user)})
 
-@users.route('', methods=['GET'])
+@users.route('/', methods=['GET'])
 def get_all_users():
     users = User.query.all()
     if not users:
@@ -22,7 +20,7 @@ def get_all_users():
 
     return jsonify([object_as_dict(user) for user in users])
 
-@users.route('', methods=['POST'])
+@users.route('/', methods=['POST'])
 def create_user():
     if not request.json or not 'email' or not 'name' in request.json:
         abort(400)
@@ -35,6 +33,15 @@ def create_user():
         return jsonify({'error':'user with this email already exists'}), 409
 
     return jsonify({'user': object_as_dict(user)}), 201
+
+@users.route('/<email>', methods=['DELETE'])
+def delete_user(email):
+    user = User.query.filter_by(email=email).first_or_404()
+
+    db.session.delete(user)
+    db.session.commit()
+
+    return jsonify({'deleted': True}), 204
 
 @users.errorhandler(404)
 def not_found(e):
