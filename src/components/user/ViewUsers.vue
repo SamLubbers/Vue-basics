@@ -4,12 +4,12 @@
     <table class="table">
       <thead>
         <tr>
-          <th v-for='(v, k) in users[0]' :key='k'>k</th>
+          <th v-for='(k, i) in orderedKeys' :key='i'>{{k}}</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for='(user, index) in users' :key='index'>
-          <td v-for='(v, k, i) in user' :key='i'>v</td>
+          <td v-for='(k, i) in orderedKeys' :key='i'>{{user[k]}}</td>
         </tr>
       </tbody>
     </table>
@@ -26,8 +26,15 @@
 export default {
   data () {
     return {
-      'users': []
+      'users': [],
+      'orderedKeys': ['id', 'name', 'email']
     }
+  },
+  created () {
+    const vm = this
+    this.$http.get('api/v1.0/users/')
+      .then((res) => (vm.users = res['body']))
+      .catch(err => console.log(err))
   }
 }
 </script>
