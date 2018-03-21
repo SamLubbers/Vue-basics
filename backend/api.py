@@ -42,15 +42,3 @@ def delete_user(email):
     db.session.commit()
 
     return jsonify({'deleted': True}), 204
-
-@users.errorhandler(404)
-def not_found(e):
-    return make_response(jsonify({'error':'not found'}), 404)
-
-@users.errorhandler(400)
-def bad_request(e):
-    return make_response(jsonify({'error':'bad request'}), 400)
-
-@users.errorhandler(405)
-def invalid_method(e):
-    return jsonify({'error':'method not allowed for the requested URL'}), 405
