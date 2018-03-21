@@ -5,6 +5,7 @@ import DynamicLink from '@/examples/DynamicLink'
 import DynamicTable from '@/examples/DynamicTable'
 import DynamicStyling from '@/examples/DynamicStyling'
 import Events from '@/examples/Events'
+import Users from '@/examples/Users'
 
 import Ex1 from '@/exercises/Ex1'
 import Ex2 from '@/exercises/Ex2'
@@ -24,21 +25,25 @@ export default new Router({
     name: 'HelloWorld',
     component: HelloWorld
   }, {
-    path: '/directives/DynamicLink',
+    path: '/examples/DynamicLink',
     name: 'DynamicLink',
     component: DynamicLink
   }, {
-    path: '/directives/DynamicTable',
+    path: '/examples/DynamicTable',
     name: 'DynamicTable',
     component: DynamicTable
   }, {
-    path: '/directives/DynamicStyling',
+    path: '/examples/DynamicStyling',
     name: 'DynamicStyling',
     component: DynamicStyling
   }, {
-    path: '/directives/Events',
+    path: '/examples/Events',
     name: 'Events',
     component: Events
+  }, {
+    path: '/examples/Users',
+    name: 'Users',
+    component: Users
   }, {
     path: '/exercises/Game',
     name: 'Game',
