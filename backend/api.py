@@ -4,9 +4,9 @@ from sqlalchemy.exc import IntegrityError
 from .model import User, db
 from .helpers import object_as_dict
 
-api = Blueprint('api', __name__, url_prefix='/api/v1.0')
+users = Blueprint('users', __name__, url_prefix='/api/v1.0/users')
 
-@api.route('/user/<email>', methods=['GET'])
+@users.route('/<email>', methods=['GET'])
 def get_user(email):
     user = User.query.filter_by(email=email).first()
     if not user:
@@ -14,7 +14,7 @@ def get_user(email):
 
     return jsonify({'user': object_as_dict(user)})
 
-@api.route('/users', methods=['GET'])
+@users.route('', methods=['GET'])
 def get_all_users():
     users = User.query.all()
     if not users:
@@ -22,7 +22,7 @@ def get_all_users():
 
     return jsonify([object_as_dict(user) for user in users])
 
-@api.route('/users', methods=['POST'])
+@users.route('', methods=['POST'])
 def create_user():
     if not request.json or not 'email' or not 'name' in request.json:
         abort(400)
@@ -36,14 +36,14 @@ def create_user():
 
     return jsonify({'user': object_as_dict(user)}), 201
 
-@api.errorhandler(404)
+@users.errorhandler(404)
 def not_found(e):
     return make_response(jsonify({'error':'not found'}), 404)
 
-@api.errorhandler(400)
+@users.errorhandler(400)
 def bad_request(e):
     return make_response(jsonify({'error':'bad request'}), 400)
 
-@api.errorhandler(405)
+@users.errorhandler(405)
 def invalid_method(e):
     return jsonify({'error':'method not allowed for the requested URL'}), 405

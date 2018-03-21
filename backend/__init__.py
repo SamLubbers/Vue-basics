@@ -21,5 +21,5 @@ def register_db(app):
 
 
 def register_views(app):
-    from .api import api
-    app.register_blueprint(api)
+    from .api import users
+    app.register_blueprint(users)
