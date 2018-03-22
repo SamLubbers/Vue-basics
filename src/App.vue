@@ -11,3 +11,4 @@ export default {
 </script>
 
 <style src='./styles/global.sass' lang="sass"></style>
+<style src='./styles/transitions.sass' lang="sass"></style>

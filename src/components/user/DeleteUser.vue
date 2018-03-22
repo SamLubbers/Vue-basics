@@ -4,7 +4,12 @@
       <label for="email">email</label>
       <input type="text" class="form-control" v-model='email' id="email">
     </div>
-    <button class="btn btn-outline-dark" @click='deleteUser'>Delete User</button>
+    <div>
+      <button class="btn btn-outline-dark" @click='deleteUser'>Delete User</button>
+      <transition name='fade'>
+      <span class="green-text inline-margin" style="padding: .5rem " v-if='deleted'>User succesfully deleted</span>
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -12,7 +17,8 @@
 export default {
   data () {
     return {
-      email: ''
+      email: '',
+      deleted: false
     }
   },
   methods: {
