@@ -25,8 +25,12 @@ export default {
     deleteUser () {
       this.$http.delete(`api/v1.0/users/${this.email}`)
         .then(res => {
-          console.log('user deleted')
           this.email = ''
+          this.deleted = true
+          let vm = this
+          setTimeout(function () {
+            vm.deleted = false
+          }, 2000)
         }, err => {
           console.log(err)
         })

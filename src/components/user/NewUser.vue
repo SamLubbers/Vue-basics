@@ -18,9 +18,7 @@
 </template>
 
 <script>
-import { feedbackMixin } from '@/mixins/feedback'
 export default {
-  mixins: [feedbackMixin],
   data () {
     return {
       name: '',
@@ -34,8 +32,11 @@ export default {
         .then(res => {
           this.name = ''
           this.email = ''
+          this.usercreated = true
           let vm = this
-          this.flash(vm.usercreated, 1000)
+          setTimeout(function () {
+            vm.usercreated = false
+          }, 2000)
         }, err => {
           console.log(err)
         })
