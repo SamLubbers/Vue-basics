@@ -11,9 +11,7 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <keep-alive>
           <component :is='state'/>
-        </keep-alive>
       </div>
     </div>
   </div>
