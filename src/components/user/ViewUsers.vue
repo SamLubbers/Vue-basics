@@ -31,10 +31,13 @@ export default {
     }
   },
   created () {
-    const vm = this
     this.$http.get('api/v1.0/users/')
-      .then((res) => (vm.users = res['body']))
-      .catch(err => console.log(err))
+      .then((res) => {
+        this.users = res['body']
+      }, err => {
+        console.log(err)
+      }
+      )
   }
 }
 </script>

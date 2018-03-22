@@ -8,7 +8,7 @@
       <label for="email">email</label>
       <input type="text" class="form-control" v-model='email' id="email">
     </div>
-    <button class="btn btn-outline-dark">Create New User</button>
+    <button class="btn btn-outline-dark" @click='createUser'>Create New User</button>
   </div>
 </template>
 
@@ -18,6 +18,18 @@ export default {
     return {
       name: '',
       email: ''
+    }
+  },
+  methods: {
+    createUser () {
+      this.$http.post('api/v1.0/users/', {'email': this.email, 'name': this.name})
+        .then(res => {
+          console.log('new user created')
+          this.name = ''
+          this.email = ''
+        }, err => {
+          console.log(err)
+        })
     }
   }
 }
