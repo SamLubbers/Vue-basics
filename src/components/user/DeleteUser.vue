@@ -7,7 +7,7 @@
     <div>
       <button class="btn btn-outline-dark" @click='deleteUser'>Delete User</button>
       <transition name='fade'>
-      <span class="green-text inline-margin" style="padding: .5rem " v-if='deleted'>User succesfully deleted</span>
+      <span class="success-text inline-margin" style="padding: .5rem " v-if='deleted'>User succesfully deleted</span>
       </transition>
     </div>
   </div>

@@ -10,9 +10,12 @@
     </div>
     <div>
       <button class="btn btn-outline-dark" @click='createUser'>Create New User</button>
-      <transition name='fade'>
-      <span class="green-text inline-margin" style="padding: .5rem" v-if='usercreated'>User succesfully created</span>
-      </transition>
+      <span class="inline-margin" style="padding: .5rem">
+        <transition name='fade' mode='out-in'>
+        <span class="success-text" v-if='usercreated'>User succesfully created</span>
+        <span class="danger-text" v-else-if='userexists'>User with this email already exists</span>
+        </transition>
+      </span>
     </div>
   </div>
 </template>
@@ -23,7 +26,8 @@ export default {
     return {
       name: '',
       email: '',
-      usercreated: false
+      usercreated: false,
+      userexists: false
     }
   },
   methods: {
@@ -38,7 +42,13 @@ export default {
             vm.usercreated = false
           }, 2000)
         }, err => {
-          console.log(err)
+          if (err.status === 409) {
+            this.userexists = true
+            let vm = this
+            setTimeout(function () {
+              vm.userexists = false
+            }, 2000)
+          }
         })
     }
   }
