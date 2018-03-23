@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="container">
+    <template v-if='serverStatus === "alive"'>
     <div class="row">
       <div class="col-12 navigation">
         <div class="flex-row" style="justify-content: space-evenly">
@@ -14,6 +15,10 @@
           <component :is='state'/>
       </div>
     </div>
+    </template>
+    <template v-else-if='serverStatus === "down"'>
+      <activateserver/>
+    </template>
   </div>
 </template>
 
@@ -21,17 +26,33 @@
 import ViewUsers from '@/components/user/ViewUsers'
 import NewUser from '@/components/user/NewUser'
 import DeleteUser from '@/components/user/DeleteUser'
+import ActivateServer from '@/components/ActivateServer'
 
 export default {
   components: {
     viewusers: ViewUsers,
     newuser: NewUser,
-    deleteuser: DeleteUser
+    deleteuser: DeleteUser,
+    activateserver: ActivateServer
   },
   data () {
     return {
-      state: 'viewusers'
+      state: 'viewusers',
+      serverStatus: ''
     }
+  },
+  created () {
+    this.$http.get('api/v1.0/users/')
+      .then((res) => {
+        this.serverStatus = 'alive'
+      }, err => {
+        console.log(err)
+        if (err.status === 504) {
+          this.serverStatus = 'down'
+        } else {
+          this.serverStatus = 'alive'
+        }
+      })
   }
 }
 </script>
