@@ -6,9 +6,12 @@
     </div>
     <div>
       <button class="btn btn-outline-dark" @click='deleteUser'>Delete User</button>
-      <transition name='fade'>
-      <span class="success-text inline-margin" style="padding: .5rem " v-if='deleted'>User succesfully deleted</span>
+      <span class="inline-margin" style="padding: .5rem ">
+      <transition name='fade' mode='out-in'>
+      <span class="success-text" v-if='deleted'>User succesfully deleted</span>
+      <span class="danger-text" v-else-if='notfound'>User with this email does not exists</span>
       </transition>
+      </span>
     </div>
   </div>
 </template>
@@ -18,7 +21,8 @@ export default {
   data () {
     return {
       email: '',
-      deleted: false
+      deleted: false,
+      notfound: false
     }
   },
   methods: {
@@ -32,7 +36,11 @@ export default {
             vm.deleted = false
           }, 2000)
         }, err => {
-          console.log(err)
+          if (err.status === 404) {
+            this.notfound = true
+            let vm = this
+            setTimeout(() => { vm.deleted = false }, 2000)
+          }
         })
     }
   }
