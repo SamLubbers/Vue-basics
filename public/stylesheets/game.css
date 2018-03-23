@@ -1,0 +1,27 @@
+.rectangle {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: #CCC; }
+
+.healthbar {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  background: #41B883;
+  color: white;
+  text-align: center;
+  transition: all 0.3s linear; }
+
+.healthText {
+  margin: 0;
+  line-height: 2rem; }
+
+#record {
+  max-height: 50vw;
+  overflow: scroll; }
+
+.btn-margin {
+  margin: 5px; }
+
+/*# sourceMappingURL=game.css.map */

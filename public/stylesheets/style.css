@@ -1,0 +1,33 @@
+body {
+  padding: 100px 20vw;
+    padding-font: 14px Futura, sans-serif;
+    padding-color: #35495E; }
+
+@media (max-width: 767.98px) {
+  body {
+    padding: 50px 10px 10px 10px; } }
+
+.hoverHighlight:hover {
+  color: #41B883; }
+
+.hoverHighlightInvert:hover {
+  background: #41B883 !important;
+  color: white;
+  cursor: pointer; }
+
+.center {
+  text-align: center; }
+
+.shadowed {
+  box-shadow: 0 0 10px 0 #CCC;
+  -webkit-box-shadow: 0 0 10px 0 #CCC; }
+
+.caps {
+  text-transform: uppercase; }
+
+.spaced {
+  width: 100%;
+  padding: 20px 0;
+  margin: 20px 0; }
+
+/*# sourceMappingURL=style.css.map */

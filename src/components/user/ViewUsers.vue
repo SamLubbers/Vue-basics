@@ -1,5 +1,6 @@
 <template lang="html">
   <div>
+    <transition name='fade' mode='out-in'>
     <template v-if='users.length > 0'>
     <table class="table">
       <thead>
@@ -16,9 +17,10 @@
     </template>
     <template v-else>
       <div class="center">
-        <p>No users currently in the database</p>
+        <p>{{errorMessage}}</p>
       </div>
     </template>
+  </transition>
   </div>
 </template>
 
@@ -27,7 +29,8 @@ export default {
   data () {
     return {
       'users': [],
-      'orderedKeys': ['id', 'name', 'email']
+      'orderedKeys': ['id', 'name', 'email'],
+      errorMessage: ''
     }
   },
   created () {
@@ -35,7 +38,9 @@ export default {
       .then((res) => {
         this.users = res['body']
       }, err => {
-        console.log(err)
+        if (err.status === 404) {
+          this.errorMessage = 'No users currently in the database'
+        }
       }
       )
   }
