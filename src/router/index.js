@@ -5,7 +5,11 @@ import DynamicLink from '@/examples/DynamicLink'
 import DynamicTable from '@/examples/DynamicTable'
 import DynamicStyling from '@/examples/DynamicStyling'
 import Events from '@/examples/Events'
+
 import Users from '@/examples/Users'
+import ViewUsers from '@/components/user/ViewUsers'
+import NewUser from '@/components/user/NewUser'
+import DeleteUser from '@/components/user/DeleteUser'
 
 import Ex1 from '@/exercises/Ex1'
 import Ex2 from '@/exercises/Ex2'
@@ -43,7 +47,12 @@ export default new Router({
   }, {
     path: '/examples/Users',
     name: 'Users',
-    component: Users
+    component: Users,
+    children: [
+      {path: '/', name: 'viewUsers', component: ViewUsers},
+      {path: 'new', name: 'NewUser', component: NewUser},
+      {path: 'delete', name: 'DeleteUser', component: DeleteUser}
+    ]
   }, {
     path: '/exercises/Game',
     name: 'Game',

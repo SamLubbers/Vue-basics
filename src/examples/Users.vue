@@ -4,15 +4,15 @@
     <div class="row">
       <div class="col-12 navigation">
         <div class="flex-row" style="justify-content: space-evenly">
-          <button class="btn btn-outline-dark" @click="state='viewusers'">View Users</button>
-          <button class="btn btn-outline-dark" @click="state='newuser'">New User</button>
-          <button class="btn btn-outline-dark" @click="state='deleteuser'">Delete User</button>
+          <router-link tag='button' class="btn btn-outline-dark" :to="{name: 'viewUsers'}">View Users</router-link>
+          <router-link tag='button' class="btn btn-outline-dark" :to="{name: 'NewUser'}">New User</router-link>
+          <router-link tag='button' class="btn btn-outline-dark" :to="{name: 'DeleteUser'}">Delete User</router-link>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
-          <component :is='state'/>
+          <router-view></router-view>
       </div>
     </div>
     </template>
@@ -23,21 +23,14 @@
 </template>
 
 <script>
-import ViewUsers from '@/components/user/ViewUsers'
-import NewUser from '@/components/user/NewUser'
-import DeleteUser from '@/components/user/DeleteUser'
 import ActivateServer from '@/components/ActivateServer'
 
 export default {
   components: {
-    viewusers: ViewUsers,
-    newuser: NewUser,
-    deleteuser: DeleteUser,
     activateserver: ActivateServer
   },
   data () {
     return {
-      state: 'viewusers',
       serverStatus: ''
     }
   },
