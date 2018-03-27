@@ -4,13 +4,13 @@
       <div class="col-12 col-sm-6">
         <h1>Vue.js basics</h1>
         <div style="display: flex; flex-direction: column">
-          <router-link :tag='button' class="btn btn-primary vertical-margin" :to="{name: 'Events'}">Events</router-link>
-          <router-link :tag='button' class="btn btn-primary vertical-margin" :to="{name: 'DynamicLink'}">Dynamic Link</router-link>
-          <router-link :tag='button' class="btn btn-primary vertical-margin" :to="{name: 'DynamicTable'}">Dynamic Table</router-link>
-          <router-link :tag='button' class="btn btn-primary vertical-margin" :to="{name: 'DynamicStyling'}">Dynamic Styling</router-link>
-          <router-link :tag='button' class="btn btn-primary vertical-margin" :to="{name: 'Game'}">Game</router-link>
-          <router-link :tag='button' class="btn btn-primary vertical-margin" :to="{name: 'MathQuiz'}">Math Quiz</router-link>
-          <router-link :tag='button' class="btn btn-primary vertical-margin" :to="{name: 'Quotes'}">Quotes</router-link>
+          <router-link tag='button' class="btn btn-primary vertical-margin" :to="{name: 'Events'}">Events</router-link>
+          <router-link tag='button' class="btn btn-primary vertical-margin" :to="{name: 'DynamicLink'}">Dynamic Link</router-link>
+          <router-link tag='button' class="btn btn-primary vertical-margin" :to="{name: 'DynamicTable'}">Dynamic Table</router-link>
+          <router-link tag='button' class="btn btn-primary vertical-margin" :to="{name: 'DynamicStyling'}">Dynamic Styling</router-link>
+          <router-link tag='button' class="btn btn-primary vertical-margin" :to="{name: 'Game'}">Game</router-link>
+          <router-link tag='button' class="btn btn-primary vertical-margin" :to="{name: 'MathQuiz'}">Math Quiz</router-link>
+          <router-link tag='button' class="btn btn-primary vertical-margin" :to="{name: 'Quotes'}">Quotes</router-link>
         </div>
       </div>
     </div>
@@ -19,12 +19,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
-  data () {
-    return {
-      description: 'Learning in progress...'
-    }
-  }
+  name: 'HelloWorld'
 }
 </script>
 <style lang='sass' scoped>
