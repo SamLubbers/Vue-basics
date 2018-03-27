@@ -4,13 +4,13 @@
       <div class="col-12 col-sm-6">
         <h1>Vue.js basics</h1>
         <div style="display: flex; flex-direction: column">
-          <button class="btn btn-primary vertical-margin" @click='$router.push("/examples/Events")'>Events</button>
-          <button class="btn btn-primary vertical-margin" @click='$router.push("/examples/DynamicLink")'>Dynamic Link</button>
-          <button class="btn btn-primary vertical-margin" @click='$router.push("/examples/DynamicTable")'>Dynamic Table</button>
-          <button class="btn btn-primary vertical-margin" @click='$router.push("/examples/DynamicStyling")'>Dynamic Styling</button>
-          <button class="btn btn-primary vertical-margin" @click='$router.push("/exercises/Game")'>Game</button>
-          <button class="btn btn-primary vertical-margin" @click='$router.push("/exercises/MathQuiz")'>Math Quiz</button>
-          <button class="btn btn-primary vertical-margin" @click='$router.push("/exercises/Quotes")'>Quotes</button>
+          <router-link :tag='button' class="btn btn-primary vertical-margin" :to="{name: 'Events'}">Events</router-link>
+          <router-link :tag='button' class="btn btn-primary vertical-margin" :to="{name: 'DynamicLink'}">Dynamic Link</router-link>
+          <router-link :tag='button' class="btn btn-primary vertical-margin" :to="{name: 'DynamicTable'}">Dynamic Table</router-link>
+          <router-link :tag='button' class="btn btn-primary vertical-margin" :to="{name: 'DynamicStyling'}">Dynamic Styling</router-link>
+          <router-link :tag='button' class="btn btn-primary vertical-margin" :to="{name: 'Game'}">Game</router-link>
+          <router-link :tag='button' class="btn btn-primary vertical-margin" :to="{name: 'MathQuiz'}">Math Quiz</router-link>
+          <router-link :tag='button' class="btn btn-primary vertical-margin" :to="{name: 'Quotes'}">Quotes</router-link>
         </div>
       </div>
     </div>
