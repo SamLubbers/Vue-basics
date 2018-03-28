@@ -4,6 +4,7 @@ import mutations from './StockTrader/mutations'
 import actions from './StockTrader/actions'
 
 export default {
+  namespaced: true,
   state,
   getters,
   mutations,
