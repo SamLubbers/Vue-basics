@@ -15,5 +15,6 @@ export default {
     name: 'IBM',
     price: 100,
     amountOwned: 0
-  }]
+  }],
+  priceMaxVariance: 10
 }

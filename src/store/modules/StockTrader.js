@@ -1,5 +1,7 @@
-import store from './StockTrader/store'
+import state from './StockTrader/state'
+import getters from './StockTrader/getters'
 
 export default {
-  store
+  state,
+  getters
 }
