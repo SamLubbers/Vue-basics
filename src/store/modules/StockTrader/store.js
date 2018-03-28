@@ -1,16 +1,19 @@
 export default {
   stocks: [{
     name: 'Apple',
-    price: 100
+    price: 100,
+    amountOwned: 0
   }, {
     name: 'Microsoft',
-    price: 100
+    price: 100,
+    amountOwned: 0
   }, {
     name: 'Google',
-    price: 100
+    price: 100,
+    amountOwned: 0
   }, {
     name: 'IBM',
-    price: 100
-  }],
-  myStocks: []
+    price: 100,
+    amountOwned: 0
+  }]
 }
