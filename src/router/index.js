@@ -20,7 +20,10 @@ import Ex5 from '@/exercises/Ex5'
 import Game from '@/exercises/Game'
 import Quotes from '@/exercises/Quotes'
 import MathQuiz from '@/exercises/MathQuiz'
+
 import StockTrader from '@/exercises/StockTrader'
+import AllStocks from '@/exercises/StockTrader-components/AllStocks'
+import MyStocks from '@/exercises/StockTrader-components/MyStocks'
 
 import NotFound from '@/NotFound'
 Vue.use(Router)
@@ -68,8 +71,11 @@ export default new Router({
     component: MathQuiz
   }, {
     path: '/exercises/StockTrader',
-    name: 'StockTrader',
-    component: StockTrader
+    component: StockTrader,
+    children: [
+      {path: '', name: 'myStocks', component: MyStocks},
+      {path: 'allStocks', name: 'allStocks', component: AllStocks}
+    ]
   }, {
     path: '/exercises/Ex1',
     name: 'Ex1',

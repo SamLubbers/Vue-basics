@@ -1,5 +1,5 @@
-import Vue from 'Vue'
-import Vuex from 'Vuex'
+import Vue from 'vue'
+import Vuex from 'vuex'
 import StockTrader from './modules/StockTrader'
 
 Vue.use(Vuex)
