@@ -11,12 +11,12 @@ export default {
     }
   },
   buy (state, payLoad) {
-    let stock = state.stocks.filter(stock => stock.name === payLoad.stockName)
+    let stock = state.stocks.filter(stock => stock.name === payLoad.stockName)[0]
     state.myFunds -= stock.price * payLoad.quantity
     stock.amountOwned += payLoad.quantity
   },
   sell (state, payLoad) {
-    let stock = state.stocks.filter(stock => stock.name === payLoad.stockName)
+    let stock = state.stocks.filter(stock => stock.name === payLoad.stockName)[0]
     state.myFunds += stock.price * payLoad.quantity
     stock.amountOwned -= payLoad.quantity
   }
