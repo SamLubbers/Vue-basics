@@ -1,14 +1,13 @@
 <template>
   <div class="container">
-    <div class="row">
+    <div class="row mb-3">
       <div class="col-12" style="border: 1px solid black">
-        <router-link :to="{ name: 'myStocks' }">MyStocks</router-link>
+        <router-link :to="{ name: 'myStocks' }">Portfolio</router-link>
         <router-link :to="{ name: 'allStocks' }">Stocks</router-link>
-        <p>tag</p>
       </div>
     </div>
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 full-width">
         <router-view></router-view>
       </div>
     </div>
@@ -22,4 +21,6 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
+.full-width
+  padding: 0
 </style>

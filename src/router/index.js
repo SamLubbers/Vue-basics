@@ -24,6 +24,7 @@ import MathQuiz from '@/exercises/MathQuiz'
 import StockTrader from '@/exercises/StockTrader'
 import AllStocks from '@/exercises/StockTrader-components/AllStocks'
 import MyStocks from '@/exercises/StockTrader-components/MyStocks'
+import TraderHome from '@/exercises/StockTrader-components/TraderHome'
 
 import NotFound from '@/NotFound'
 Vue.use(Router)
@@ -73,7 +74,8 @@ export default new Router({
     path: '/exercises/StockTrader',
     component: StockTrader,
     children: [
-      {path: '', name: 'myStocks', component: MyStocks},
+      {path: '', name: 'traderHome', component: TraderHome},
+      {path: 'myStocks', name: 'myStocks', component: MyStocks},
       {path: 'allStocks', name: 'allStocks', component: AllStocks}
     ]
   }, {

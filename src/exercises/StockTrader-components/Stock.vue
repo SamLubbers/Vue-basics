@@ -5,7 +5,7 @@
     </div>
     <div class="stock-body">
       <input type="text" class='form-control'>
-      <button class="btn" :class="stockType === 'buy' ? 'btn-priamry' : 'btn-danger'">{{stockType}}</button>
+      <button class="btn" :class="stockType === 'buy' ? 'btn-primary' : 'btn-danger'">{{stockType}}</button>
     </div>
   </div>
 </template>

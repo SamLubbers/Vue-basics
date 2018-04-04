@@ -16,6 +16,6 @@ export default {
     price: 100,
     amountOwned: 0
   }],
-  priceMaxVariance: 10,
+  priceMaxVariance: 200,
   myFunds: 10000
 }
