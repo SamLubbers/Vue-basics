@@ -34,13 +34,15 @@ export default {
       'sell'
     ]),
     execute (stockName) {
-      let payLoad = {stockName: stockName, quantity: this.quantity}
-      if (this.stockType === 'buy') {
-        this.buy(payLoad)
-      } else if (this.stockType === 'sell') {
-        this.sell(payLoad)
+      if (!isNaN(this.quantity)) {
+        let payLoad = {stockName: stockName, quantity: this.quantity}
+        if (this.stockType === 'buy') {
+          this.buy(payLoad)
+        } else if (this.stockType === 'sell') {
+          this.sell(payLoad)
+        }
+        this.quantity = '0'
       }
-      this.quantity = '0'
     }
   }
 }
