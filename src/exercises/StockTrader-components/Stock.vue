@@ -1,12 +1,12 @@
 <template>
   <div class="stock-container">
-    <div class="d-flex justify-content-between stock-header" :style="{background: stockType === 'buy' ? 'lightgreen' : 'lightblue'}">
+    <div class="d-flex justify-content-between stock-header flex-wrap" :style="{background: stockType === 'buy' ? 'lightgreen' : 'lightblue'}">
       <h5 class="mb-0">{{stock.name}}</h5>
-      <div>
+      <div class="flex-nowrap">
         <span>price: {{stock.price}}</span> | <span>amount owned: {{stock.amountOwned}}</span>
       </div>
     </div>
-    <div class="d-flex justify-content-between stock-body">
+    <div class="d-flex justify-content-between stock-body flex-wrap">
       <input type="text" class='form-control' style="width: 200px" v-model.number="quantity">
       <button class="btn" :class="stockType === 'buy' ? 'btn-primary' : 'btn-danger'" @click='execute(stock.name)'>{{stockType}}</button>
     </div>
@@ -61,4 +61,8 @@ export default {
 
 .stock-body
   padding: 1rem
+
+@media (max-width:1200px)
+  .stock-container
+    width: 100%
 </style>
